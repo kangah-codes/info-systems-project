@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from https://bootdey.com  -->
+    <!--  All snippets are MIT license https://bootdey.com/license -->
+    <title>Staff Profile</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="{{ url_for('static', filename='css/sb-admin-2.css') }}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.png') }}">
+
+    <style type="text/css">
+    	body{margin-top:20px;}
+
+      body {
+          color: #6c7293;
+      }
+
+      .profile-navbar .nav-item .nav-link {
+        color: #6c7293;
+      }
+
+      .profile-navbar .nav-item .nav-link.active {
+        color: #464dee;
+      }
+
+      .profile-navbar .nav-item .nav-link i {
+        font-size: 1.25rem;
+      }
+
+      .profile-feed-item {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid #e9e9e9;
+      }
+      .img-sm {
+          width: 43px;
+          height: 43px;
+      }
+    </style>
+</head>
+<body style="background-color: rgb(0, 56, 108)">
+<link rel="stylesheet" href="//cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css">
+<div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="border-bottom text-center pb-4">
+                    <img src="/../static/img/uploads/{{ staff[0][0] }}.png" class="rounded-circle" style="width: 300px;height: 300px" id='pix' onerror="standby()">
+                    <script>
+                    function standby() {
+                      document.getElementById('pix').src = '/../static/img/avatar1.jpg';
+                    }
+                    </script>
+
+                    <div class="mb-3">
+                      <h3>{{ staff[0][0][2] }} {{ staff[0][0][1] }}</h3>
+                      <div class="d-flex align-items-center justify-content-center">
+                        <h5 class="mb-0 mr-2 text-muted">{{ staff[0][0][0] }}</h5>
+                        <div class="br-wrapper br-theme-css-stars"><select id="profile-rating" name="rating" autocomplete="off" style="display: none;">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select><div class="br-widget"><a href="#" data-rating-value="1" data-rating-text="1" class="br-selected br-current"></a><a href="#" data-rating-value="2" data-rating-text="2"></a><a href="#" data-rating-value="3" data-rating-text="3"></a><a href="#" data-rating-value="4" data-rating-text="4"></a><a href="#" data-rating-value="5" data-rating-text="5"></a></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="py-4">
+                    <p class="clearfix">
+                      <span class="float-left">
+                        Department
+                      </span>
+                      <span class="float-right text-muted">
+                        Diagnostic Services
+                      </span>
+                    </p>
+                    <p class="clearfix">
+                      <span class="float-left">
+                        Phone
+                      </span>
+                      <span class="float-right text-muted">
+                        {{ staff[0][0][3] }}
+                      </span>
+                    </p>
+                    
+                    <p class="clearfix">
+                      <a href="/home/{{ session }}/{{ inf }}"><button class="btn btn-warning">Back</button></a>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-lg-8">                    
+                  <div class="mt-4 py-2 border-top border-bottom">
+                    <h1>Staff Profile</h1>
+                  </div>
+                  <h3>Appointments</h3>
+                  <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Appointments</h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                              <tr>
+                                <th>Appointment ID</th>
+                                <th>Patient ID</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for i in staff[2] %}
+                                <tr>
+                                  <td>{{ i[0] }}</td>
+                                  <td>{{ i[3] }}</td>
+                                  {% if i[1][0:4] <= (today|string)[0:4] and i[1][5:7] <= (today|string)[5:7] and i[1][8:10] < (today|string)[8:10] %}
+                                    <td class='bg-danger' style='color:white'><strike>{{ i[1] }}</strike></td>
+                                  {% else %}
+                                    <td class='bg-success' style='color:white'>{{ i[1] }}</td>
+                                  {% endif %}
+                                  {% if i[4][0:2]|int >= 12 %}
+                                    <td class='bg-warning'>{{ i[4] }} PM</td>
+                                  {% else %}
+                                    <td class='bg-success' style="color:white">{{ i[4] }} AM</td>
+                                  {% endif %}
+                                </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  <h3>Prescriptions</h3>
+                  <div class="card shadow mb-4">
+                      <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Presciptions</h6>
+                      </div>
+                      <div class="card-body">
+                        <div class="table-responsive">
+                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                              <tr>
+                                <th>Medicine Name</th>
+                                <th>Presctiption ID</th>
+                                <th>Date</th>
+                                <th>Patient</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {% for i in staff[1] %}
+                                <tr>
+                                  <td>{{ i[4] }}</td>
+                                  <td>{{ i[0] }}</td>
+                                  <td>{{ i[3] }}</td>
+                                  <td>{{ i[2] }}</td>
+                                </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

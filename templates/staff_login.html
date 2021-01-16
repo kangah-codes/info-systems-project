@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Login</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{{ url_for('static', filename='css/sb-admin-2.css') }}" rel="stylesheet">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.png') }}">
+  <style>
+    /*body{
+      background-image: url("{{ url_for('static', filename='img/backgrounds/bg.jpg') }}");
+      background-repeat:no-repeat;
+       background-size:cover;
+    }*/
+  </style>
+</head>
+
+<body class="bg-gradient-primary">
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4"><!-- <img src="{{ url_for('static', filename='img/logo.png') }}" width="100%"> -->
+                       <i class="fa fa-user-md fa-10x"></i>
+                       <style type="text/css">
+                         .fa-user-md{
+                          color: rgb(0, 56, 108);
+                          transition: 0.5s;
+                        }
+                        .fa-user-md:hover{
+                          color: rgb(218, 177, 103);
+                        }
+                       </style>
+                    </h1>
+                  </div>
+                  <form class="user" method="post">
+                    <div class="form-group" id="id01">
+                      <input type="text" name='id' required class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Staff ID">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" name='passw' required class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                    </div>
+                      <button class="btn btn-login btn-user btn-block" type="submit" onclick="document.getElementById('spin').style.display='block'">Login</button>
+                  </form>
+                  <div class="form-group" style="margin-top: 10px;">
+                      <div class="custom-control custom-checkbox small">
+                      </div>
+                      {% if msg == 'error' %}
+                        <div class="alert alert-danger" role="alert" style="margin-top: 20px">
+                          Invalid ID or Password
+                        </div>
+                      {% endif %}
+                  </div>
+                  <center><div class="spinner-border text-primary" id='spin' style="margin-top:10px"></div></center>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+  <script src="{{ url_for('static', filename='vendor/jquery/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{{ url_for('static', filename='vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{{ url_for('static', filename='js/sb-admin-2.min.js') }}"></script>
+  <script type="text/javascript">
+    // let modal = document.getElementById('id01');
+    let spinner = document.getElementById('spin');
+    spinner.style.display = 'none';
+
+  
+  </script>
+
+</body>
+
+</html>

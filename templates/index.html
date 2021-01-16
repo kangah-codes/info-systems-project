@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>UG Clinical Registration</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/form-elements.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.png') }}">
+
+    </head>
+
+    <body>
+<!--         <div class="top-content">
+ -->            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <img src="{{ url_for('static', filename='img/logo.png') }}">
+                        <h1 style="color: rgb(0, 56, 108)"><strong>UG Clinical Examination</strong></h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
+                    	<form role="form" method="post" class="f1" enctype="multipart/form-data">
+                    		<p style="color: rgb(0, 56, 108)">Fill in the form to register for clinicals</p>
+                    		<div class="f1-steps">
+                    			<div class="f1-progress">
+                    			    <div class="f1-progress-line" data-now-value="12.5" data-number-of-steps="4" style="width: 12.5%;"></div>
+                    			</div>
+                    			<div class="f1-step active">
+                    				<div class="f1-step-icon"><i class="fa fa-graduation-cap"></i></div>
+                    				<p>about</p>
+                    			</div>
+                    			<div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-stethoscope"></i></div>
+                    				<p>history</p>
+                    			</div>
+                    			<div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-heartbeat"></i></div>
+                    				<p>conditions</p>
+                    			</div>
+                    		    <div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-user"></i></div>
+                    				<p>picture</p>
+                    			</div>
+                    		</div>
+
+                    		<fieldset>
+                    		    <h4>Student information:</h4>
+                    			<div class="form-group">
+                    			    <label for="f1-first-name">Full name</label>
+                                    <input type="text" name="name" placeholder="Full name" class="f1-first-name form-control" id="f1-first-name">
+                                </div>
+                                <div class="form-group">
+                    			    <label for="f1-first-name">ID</label>
+                                    <input type="text" name="id" placeholder="Student ID" class="f1-first-name form-control" id="f1-first-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="f1-first-name">Age</label>
+                                    <input type="number" min="0" name="age" placeholder="Age" class="f1-first-name form-control" id="f1-first-name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="f1-first-name">Sex</label>
+                                    <div class="form-check form-check-inline">
+                                        <label class="form-check-label" for="inlineCheckbox1">
+                                        <input class="form-check-input" type="radio" name="sex" id="inlineRadio1" value="Male">
+                                        Male</label>
+                                        <label class="form-check-label" for="inlineCheckbox1">
+                                        <input class="form-check-input" type="radio" name="sex" id="inlineRadio1" value="Female">Female</label>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                    			    <label for="f1-first-name">Student Email</label>
+                                    <input type="email" name="email" placeholder="Student Mail" class="f1-first-name form-control" id="f1-first-name">
+                                </div>
+                                <div class="form-group">
+                    			    <label for="f1-first-name">Contact number</label>
+                                    <input type="text" name="contact" placeholder="Number" class="f1-first-name form-control" id="f1-first-name">
+                                </div>
+                                <div class="form-group">
+                    			    <label for="f1-first-name">Guardian Name</label>
+                                    <input type="text" name="guardian" placeholder="Guardian Name" class="f1-first-name form-control" id="f1-first-name">
+                                </div>
+                                <div class="form-group">
+                    			    <label for="f1-first-name">Guardian Contact</label>
+                                    <input type="text" name="guardian_con" placeholder="Guardian Contact" class="f1-first-name form-control" id="f1-first-name">
+                                </div>
+                                <div class="form-group">
+                    			    <label for="f1-first-name">Home Address</label>
+                                    <input type="text" name="address" placeholder="Address" class="f1-first-name form-control" id="f1-first-name">
+                                </div>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <h4>Medical History:</h4>
+                                <ul>
+                                    <li>
+                                        <div class="form-group">
+                                            <p>Is there any history of <strong>Diabetes</strong> in your family?</p>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="diabetes" id="inlineRadio1" value="Yes">
+                                                Yes</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="diabetes" id="inlineRadio1" value="No">No</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="diabetes" id="inlineRadio1" value="Not Sure">Not Sure</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <p>Is there any history of <strong>Cancer</strong> in your family?</p>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="cancer" id="inlineRadio1" value="Yes">
+                                                Yes</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="cancer" id="inlineRadio1" value="No">No</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="cancer" id="inlineRadio1" value="Not Sure">Not Sure</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <p>Is there any history of <strong>Asthma</strong> in your family?</p>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="asthma" id="inlineRadio1" value="Yes">
+                                                Yes</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="asthma" id="inlineRadio1" value="No">No</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="asthma" id="inlineRadio1" value="Not Sure">Not Sure</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <p>Is there any history of <strong>High Blood Pressure</strong> in your family?</p>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="hbp" id="inlineRadio1" value="Yes">
+                                                Yes</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="hbp" id="inlineRadio1" value="No">No</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="hbp" id="inlineRadio1" value="Not Sure">Not Sure</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <p>Is there any history of <strong>Heart disease</strong> in your family?</p>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="heart" id="inlineRadio1" value="Yes">
+                                                Yes</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="heart" id="inlineRadio1" value="No">No</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="heart" id="inlineRadio1" value="Not Sure">Not Sure</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <p>Have you received treatment for any disease in the past year?</p>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="treatment" id="inlineRadio1" value="Yes">
+                                                Yes</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="treatment" id="inlineRadio1" value="No">No</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="treatment" id="inlineRadio1" value="Not Sure">Not Sure</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <p>Have you received any immunizations in the past year?</p>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="immunizations" id="inlineRadio1" value="Yes">
+                                                Yes</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="immunizations" id="inlineRadio1" value="No">No</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="immunizations" id="inlineRadio1" value="Not Sure">Not Sure</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <h4>Medical Conditions:</h4>
+                                <ul>
+                                    <li>
+                                        <div class="form-group">
+                                            <p>Do you have any <strong>visual</strong> impairments?</p>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="visual" id="inlineRadio1" value="Yes">
+                                                Yes</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="visual" id="inlineRadio1" value="No">No</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="visual" id="inlineRadio1" value="Not Sure">Not Sure</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <p>Do you have any <strong>hearing</strong> impairments?</p>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="hearing" id="inlineRadio1" value="Yes">
+                                                Yes</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="hearing" id="inlineRadio1" value="No">No</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="hearing" id="inlineRadio1" value="Not Sure">Not Sure</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <p>Do you have any <strong>respiratory</strong> impairments?</p>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="respiratory" id="inlineRadio1" value="Yes">
+                                                Yes</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="respiratory" id="inlineRadio1" value="No">No</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="respiratory" id="inlineRadio1" value="Not Sure">Not Sure</label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="form-group">
+                                            <p>Do you have any <strong>physical</strong> deformity/impairments?</p>
+                                            <div class="form-check form-check-inline">
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="physical" id="inlineRadio1" value="Yes">
+                                                Yes</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="physical" id="inlineRadio1" value="No">No</label>
+                                                <label class="form-check-label" for="inlineCheckbox1">
+                                                    <input class="form-check-input" type="radio" name="physical" id="inlineRadio1" value="Not Sure">Not Sure</label>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <h4>Picture:</h4>
+                                <div class="form-group">
+                                    <label>Upload a passport picture</label>
+                                    <!-- <input type="file" name="img" class="form-control" accept='image/*'> -->
+                                    <input type="file" class="form-control border-3 large" style="padding-bottom: 45px;" id="validatedCustomFile" required accept='image/*' name="img" placeholder="Upload">
+                                </div>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="submit" class="btn btn-submit">Submit</button>
+                                </div>
+                            </fieldset>
+                            {% if msg == 'error' %}
+                                <div class="alert alert-danger" role="alert" style="margin-top: 20px">
+                                  The server encountered an error, please try again!
+                                </div>
+                            {% elif msg == 'success' %}
+                                <div class="alert alert-success" role="alert">
+                                  Success, your access password is "{{ pwd }}""
+                                </div>
+                            {% endif %}
+                    	</form>
+                    </div>
+                </div>
+            </div>
+<!--         </div> -->
+        <!-- Javascript -->
+        <script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.backstretch.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/retina-1.1.0.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+    </body>
+
+</html>

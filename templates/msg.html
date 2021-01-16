@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>UG Clinical Registration</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/form-elements.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.png') }}">
+
+    </head>
+
+    <body>
+<!--         <div class="top-content">
+ -->            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <img src="{{ url_for('static', filename='img/logo.png') }}">
+                        <h1 style="color: rgb(0, 56, 108)"><strong>UG Clinical Examination</strong></h1>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
+                    
+                            {% if msg == 'error' %}
+                                <div class="alert alert-danger" role="alert" style="margin-top: 20px">
+                                  The server encountered an error, please try again!
+                                </div>
+                            {% elif msg == 'success' %}
+                                <div class="alert alert-success" role="alert">
+                                  Success, your access password is "{{ pwd }}""
+                                </div>
+                            {% endif %}
+                    </div>
+                </div>
+            </div>
+<!--         </div> -->
+        <!-- Javascript -->
+        <script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/jquery.backstretch.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/retina-1.1.0.min.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+    </body>
+
+</html>

@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from https://bootdey.com  -->
+    <!--  All snippets are MIT license https://bootdey.com/license -->
+    <title>Patient - {{ patient[0][0] }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/sb-admin-2.css') }}" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='ico/favicon.png') }}">
+
+    <style type="text/css">
+    	body{margin-top:20px;}
+
+      body {
+          color: #6c7293;
+      }
+
+      .profile-navbar .nav-item .nav-link {
+        color: #6c7293;
+      }
+
+      .profile-navbar .nav-item .nav-link.active {
+        color: #464dee;
+      }
+
+      .profile-navbar .nav-item .nav-link i {
+        font-size: 1.25rem;
+      }
+
+      .profile-feed-item {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid #e9e9e9;
+      }
+      .img-sm {
+          width: 43px;
+          height: 43px;
+      }
+    </style>
+</head>
+<body style="background-color: rgb(0, 56, 108)">
+<link rel="stylesheet" href="//cdn.materialdesignicons.com/3.7.95/css/materialdesignicons.min.css">
+<div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-lg-4">
+                  <div class="border-bottom text-center pb-4">
+                    <img src="/../static/img/uploads/{{ patient[0][0] }}.png"class="rounded-circle" id='pix' onerror="standby()" style="width: 300px;height: 300px">
+                    <script>
+                    function standby() {
+                      document.getElementById('pix').src = '/../static/img/avatar1.jpg';
+                    }
+                    </script>
+
+                    <div class="mb-3">
+                      <h3>{{ patient[0][1] }}</h3>
+                      <div class="d-flex align-items-center justify-content-center">
+                        <h5 class="mb-0 mr-2 text-muted">{{ patient[0][0] }}</h5>
+                        <div class="br-wrapper br-theme-css-stars"><select id="profile-rating" name="rating" autocomplete="off" style="display: none;">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                        </select><div class="br-widget"><a href="#" data-rating-value="1" data-rating-text="1" class="br-selected br-current"></a><a href="#" data-rating-value="2" data-rating-text="2"></a><a href="#" data-rating-value="3" data-rating-text="3"></a><a href="#" data-rating-value="4" data-rating-text="4"></a><a href="#" data-rating-value="5" data-rating-text="5"></a></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="py-4">
+                    <p class="clearfix">
+                      <span class="float-left">
+                        Student Mail
+                      </span>
+                      <span class="float-right text-muted">
+                        {{ patient[0][4] }}
+                      </span>
+                    </p>
+                    <p class="clearfix">
+                      <span class="float-left">
+                        Phone
+                      </span>
+                      <span class="float-right text-muted">
+                        {{ patient[0][5] }}
+                      </span>
+                    </p>
+                    <p class="clearfix">
+                      <span class="float-left">
+                        Stage 1
+                      </span>
+                      <span class="float-right text-muted" style="color: green">
+                        {% if patient[1][18] == 'Not Completed' %}
+                          <a href="#" style="color: red">{{ patient[1][18] }}</a>
+                        {% else %}
+                          <a href="#" style="color: green">{{ patient[1][18] }}</a>
+                        {% endif %}
+                      </span>
+                    </p>
+                    <p class="clearfix">
+                      <span class="float-left">
+                        Stage 2
+                      </span>
+                      <span class="float-right text-muted">
+                        {% if patient[1][19] == 'Not Completed' %}
+                          <a href="#" style="color: red">{{ patient[1][19] }}</a>
+                        {% else %}
+                          <a href="#" style="color: green">{{ patient[1][19] }}</a>
+                        {% endif %}
+                      </span>
+                    </p>
+                    <p class="clearfix">
+                      <span class="float-left">
+                        Stage 3
+                      </span>
+                      <span class="float-right text-muted">
+                        {% if patient[1][20] == 'Not Completed' %}
+                          <a href="#" style="color: red">{{ patient[1][20] }}</a>
+                        {% else %}
+                          <a href="#" style="color: green">{{ patient[1][20] }}</a>
+                        {% endif %}
+                      </span>
+                    </p>
+                    <p class="clearfix">
+                      <img src="/../static/img/uploads/{{ patient[0][0] }}_x_ray.png" id='pic' width="100%" onerror="standby()">
+                      <script>
+                    function standby() {
+                      document.getElementById('pic').src = '/../static/img/avatar.jpg'
+                    }
+                    </script>
+                    </p>
+                    <p class="clearfix">
+                      <a href="/login"><button class="btn btn-danger">Logout</button></a>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-lg-8">                    
+                  <div class="mt-4 py-2 border-top border-bottom">
+                    <h1>Medical Examination Results</h1>
+                  </div>
+                  <h3>Vision</h3>
+                  <p class="clearfix">
+                      <span class="float-left">
+                        Right Eye
+                      </span>
+                      {% if patient[1][10] == 'Not Uploaded' %}
+                        <span class="float-right text-muted" style="color: green">
+                          <a href="#" style="color: Red">Not Uploaded</a>
+                        </span><br>
+                      {% else %}
+                        {% if patient[1][10] >= 70%}
+                          <span class="float-right text-muted" style="color: red">
+                            <a href="#" style="color: green">20/{{ patient[1][10] }}</a>
+                          </span><br>
+                        {% else %}
+                          <span class="float-right text-muted" style="color: green">
+                            <a href="#" style="color: green">20/{{ patient[1][10] }}</a>
+                          </span><br>
+                        {% endif %}
+                      {% endif %}
+                      <span class="float-left">
+                        Left Eye
+                      </span>
+                      {% if patient[1][11] == 'Not Uploaded' %}
+                        <span class="float-right text-muted" style="color: green">
+                          <a href="#" style="color: Red">Not Uploaded</a>
+                        </span><br>
+                      {% else %}
+                        {% if patient[1][11] >= 70%}
+                          <span class="float-right text-muted" style="color: red">
+                            <a href="#" style="color: green">20/{{ patient[1][11] }}</a>
+                          </span><br>
+                        {% else %}
+                          <span class="float-right text-muted" style="color: green">
+                            <a href="#" style="color: green">20/{{ patient[1][11] }}</a>
+                          </span><br>
+                        {% endif %}
+                      {% endif %}
+                    </p>
+                  <h3>Height & Weight</h3>
+                  <p class="clearfix">
+                      <span class="float-left">
+                        BMI
+                      </span>
+                      {% if patient[1][1] == 'Not Uploaded' %}
+                        <span class="float-right text-muted" style="color: red">
+                          <a href="#" style="color: Red">Not Uploaded</a>
+                        </span><br>
+                      {% else %}
+                        {% if patient[1][1]|int/((patient[1][2]|int)**2) < 18.5 %}
+                          <span class="float-right text-muted" style="color: red">
+                            <a href="#" style="color: red">Underweight</a>
+                          </span><br>
+                        {% elif patient[1][1]|int/((patient[1][2]|int)**2) >= 18.5 and patient[1][1]|int/((patient[1][2]|int)**2) <= 24.9 %}
+                          <span class="float-right text-muted" style="color: green">
+                            <a href="#" style="color: green">Normal</a>
+                            </span><br>
+                        {% elif patient[1][1]|int/((patient[1][2]|int)**2) >= 25 and patient[1][1]|int/((patient[1][2]|int)**2) <= 29.9 %}
+                            <span class="float-right text-muted" style="color: yellow">
+                            <a href="#" style="color: green">Overweight</a>
+                            </span><br>
+                        {% else %}
+                          <span class="float-right text-muted" style="color: red">
+                            <a href="#" style="color: green">Obese</a>
+                            </span><br>
+                        {% endif %}
+                      {% endif %}
+                    </p>
+                  <h3>Blood Pressure</h3>
+                  <p class="clearfix">
+                      <span class="float-left">
+                        BP
+                      </span>
+                      {% if patient[1][3] == 'Not Uploaded' or patient[1][4] == 'Not Uploaded'%}
+                        <span class="float-right text-muted" style="color: red">
+                          <a href="#" style="color: Red">Not Uploaded</a>
+                        </span><br>
+                      {% else %}
+                          <span class="float-right text-muted">
+                            <a href="#" style="color: green">{{ patient[1][3] }}/{{ patient[1][4] }}</a>
+                          </span><br>
+                      {% endif %}
+                    </p>
+                  <h3>Blood Test</h3>
+                  <p class="clearfix">
+                      <span class="float-left">
+                        Sickling
+                      </span>
+                      {% if patient[1][7] == 'Not Uploaded' %}
+                        <span class="float-right text-muted" style="color: red">
+                          <a href="#" style="color: Red">Not Uploaded</a>
+                        </span><br>
+                      {% else %}
+                        <span class="float-right text-muted" style="color: green">
+                          <a href="#" style="color: green">{{ patient[1][7] }}</a>
+                        </span><br>
+                      {% endif %}
+                      <span class="float-left">
+                        STD
+                      </span>
+                      {% if patient[1][12] == 'Not Uploaded' %}
+                        <span class="float-right text-muted" style="color: red">
+                          <a href="#" style="color: Red">Not Uploaded</a>
+                        </span><br>
+                      {% else %}
+                        <span class="float-right text-muted">
+                          <a href="#">{{ patient[1][12] }}</a>
+                        </span><br>
+                      {% endif %}
+                      <span class="float-left">
+                        Blood Group
+                      </span>
+                      {% if patient[1][8] == 'Not Uploaded' %}
+                        <span class="float-right text-muted" style="color: red">
+                          <a href="#" style="color: Red">Not Uploaded</a>
+                        </span><br>
+                      {% else %}
+                        <span class="float-right text-muted" style="color: green">
+                          <a href="#">{{ patient[1][8] }}</a>
+                        </span><br>
+                      {% endif %}
+                      <span class="float-left">
+                        Blood Cell Count
+                      </span>
+                      {% if patient[1][5] == 'Not Uploaded' or patient[1][6] == 'Not Uploaded' %}
+                        <span class="float-right text-muted" style="color: red">
+                          <a href="#" style="color: Red">Not Uploaded</a>
+                        </span><br>
+                      {% else %}
+                        <span class="float-right text-muted" style="color: green">
+                          <a href="#" style="color: green">{{ patient[1][5] }}-{{ patient[1][6] }}</a>
+                        </span><br>
+                      {% endif %}
+                  <h3>Urinalysis</h3>
+                  <p class="clearfix">
+                      <span class="float-left">
+                        pH
+                      </span>
+                      {% if patient[1][9] == 'Not Uploaded' %}
+                        <span class="float-right text-muted" style="color: red">
+                          <a href="#" style="color: Red">Not Uploaded</a>
+                        </span><br>
+                      {% else %}
+                        {% if patient[1][9] >= 4.6 and patient[1][9] <= 8 %}
+                          <span class="float-right text-muted" style="color: green">
+                            <a href="#" style="color: green">{{ patient[1][9] }}</a>
+                          </span><br>
+                        {% else %}
+                          <span class="float-right text-muted" style="color: red">
+                            <a href="#" style="color: green">{{ patient[1][9] }}</a>
+                          </span><br>
+                        {% endif %}
+                      {% endif %}
+                      <span class="float-left">
+                        Kidney Function
+                      </span>
+                      {% if patient[1][14] == 'Not Uploaded' %}
+                        <span class="float-right text-muted" style="color: red">
+                          <a href="#" style="color: Red">Not Uploaded</a>
+                        </span><br>
+                      {% else %}
+                        {% if patient[1][14] >= 1.010 and patient[1][14] <= 1.030 %}
+                          <span class="float-right text-muted" style="color: green">
+                            <a href="#" style="color: green">Normal</a>
+                          </span><br>
+                        {% else %}
+                          <span class="float-right text-muted" style="color: yellow">
+                            <a href="#" style="color: green">Not normal</a>
+                          </span><br>
+                        {% endif %}
+                      {% endif %}
+                    </p>
+                  <h3>X-Ray</h3>
+                  <p class="clearfix">
+                      <span class="float-left">
+                        Doctor's Remarks
+                      </span>
+                      {% if patient[1][16] == 'Not Uploaded' %}
+                        <span class="float-right text-muted" style="color: red">
+                          <a href="#" style="color: Red">Not Uploaded</a>
+                        </span><br>
+                      {% else %}
+                        <span class="float-right text-muted">
+                          <a href="#" style="color: green">{{ patient[1][16] }}</a>
+                        </span><br>
+                      {% endif %}
+                      
+                    </p>
+                  <h3>Doctor's advice</h3>
+                  <p class="clearfix">
+                      {% if patient[1][17] == 'Not Uploaded' %}
+                        <p style="color: red">Not Uploaded</p>
+                      {% else %}
+                        <p>{{ patient[1][17] }}</p>
+                      {% endif %}
+                  </p>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </p></div>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
